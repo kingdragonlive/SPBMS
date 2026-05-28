@@ -754,13 +754,13 @@ window.loginWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, provider);
     // Domain check — ใส่ email ตัวเองก็ได้ในช่วง dev
-    // const email = result.user.email;
-    // if (!email.endsWith('@mkschool.ac.th') && !email.endsWith('@gmail.com')) {
-    //   await signOut(auth);
-    //   showAuthError('เฉพาะ email โรงเรียนเมืองคงเท่านั้น');
-    //   setLoading(false);
-    //   return;
-    // }
+     const email = result.user.email;
+     if (!email.endsWith('@mkschool.ac.th') && !email.endsWith('@gmail.com')) {
+       await signOut(auth);
+       showAuthError('เฉพาะ email โรงเรียนเมืองคงเท่านั้น');
+       setLoading(false);
+       return;
+     }
   } catch (e) {
     setLoading(false);
     showAuthError(e.code === 'auth/popup-closed-by-user' ? 'ปิด popup ก่อนเข้าสู่ระบบ' : e.message);
