@@ -755,7 +755,7 @@ window.loginWithGoogle = async () => {
     const result = await signInWithPopup(auth, provider);
     // Domain check — ใส่ email ตัวเองก็ได้ในช่วง dev
      const email = result.user.email;
-     if (!email.endsWith('@mkschool.ac.th') && !email.endsWith('@gmail.com')) {
+     if (!email.endsWith('@mkschool.ac.th') ) {
        await signOut(auth);
        showAuthError('เฉพาะ email โรงเรียนเมืองคงเท่านั้น');
        setLoading(false);
